@@ -75,22 +75,15 @@ body::before {
 .ring-1::before {
     content: '';
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 8px; height: 8px;
     background: var(--pink);
     border-radius: 50%;
-    top: -4px;
-    left: 50%;
+    top: -4px; left: 50%;
     translate: -50% 0;
     box-shadow: 0 0 12px rgba(244,114,182,0.6);
 }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    max-width: 700px;
-}
+.hero-content { position: relative; z-index: 2; text-align: center; max-width: 700px; }
 
 .age-badge {
     display: inline-block;
@@ -116,11 +109,7 @@ body::before {
     color: var(--deep);
 }
 
-.hero-title span {
-    display: block;
-    font-style: italic;
-    color: var(--rose);
-}
+.hero-title span { display: block; font-style: italic; color: var(--rose); }
 
 .hero-sub {
     margin-top: 24px;
@@ -132,8 +121,7 @@ body::before {
 
 .scroll-hint {
     position: absolute;
-    bottom: 40px;
-    left: 50%;
+    bottom: 40px; left: 50%;
     translate: -50% 0;
     display: flex;
     flex-direction: column;
@@ -148,8 +136,7 @@ body::before {
 }
 
 .scroll-line {
-    width: 1px;
-    height: 50px;
+    width: 1px; height: 50px;
     background: linear-gradient(to bottom, var(--pink), transparent);
     animation: scrollPulse 2s ease infinite;
 }
@@ -164,12 +151,7 @@ body::before {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.gallery-section {
-    padding: 80px 0;
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-}
+.gallery-section { padding: 80px 0; overflow: hidden; position: relative; z-index: 1; }
 
 .gallery-label {
     text-align: center;
@@ -205,12 +187,10 @@ body::before {
 
 .photo-card:hover { transform: scale(1.04) rotate(-1deg); }
 .photo-card:nth-child(even):hover { transform: scale(1.04) rotate(1deg); }
-
 .photo-card img { width: 100%; height: 100%; object-fit: cover; }
 
 .photo-placeholder {
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -220,8 +200,7 @@ body::before {
 }
 
 .photo-placeholder .ph-icon {
-    width: 56px;
-    height: 56px;
+    width: 56px; height: 56px;
     border-radius: 50%;
     background: rgba(244,114,182,0.2);
     display: flex;
@@ -229,12 +208,7 @@ body::before {
     justify-content: center;
 }
 
-.photo-placeholder p {
-    font-size: 0.8rem;
-    color: var(--muted);
-    text-align: center;
-    padding: 0 20px;
-}
+.photo-placeholder p { font-size: 0.8rem; color: var(--muted); text-align: center; padding: 0 20px; }
 
 .photo-card .card-overlay {
     position: absolute;
@@ -246,7 +220,6 @@ body::before {
     opacity: 0;
     transition: opacity 0.3s;
 }
-
 .photo-card:hover .card-overlay { opacity: 1; }
 
 .card-section {
@@ -268,7 +241,6 @@ body::before {
 }
 
 .envelope-wrap { width: min(440px, 92vw); perspective: 1600px; }
-
 .envelope { width: 100%; position: relative; cursor: pointer; }
 
 .env-body {
@@ -288,8 +260,7 @@ body::before {
 }
 
 .env-body-inner {
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -320,8 +291,7 @@ body::before {
 .envelope.open .env-flap { transform: rotateX(-180deg); }
 
 .env-stripe {
-    width: 100%;
-    height: 2px;
+    width: 100%; height: 2px;
     background: linear-gradient(90deg, transparent, var(--pink), var(--warm), var(--pink), transparent);
 }
 
@@ -402,37 +372,41 @@ body::before {
     margin-top: 8px;
 }
 
-.playlist-section {
-    padding: 60px 20px 100px;
-    max-width: 680px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-}
-
-.playlist-section h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--deep);
-    margin-bottom: 28px;
-    letter-spacing: -0.02em;
-}
-
-.spotify-wrap {
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(26,10,20,0.12);
-}
-
-.spotify-wrap iframe { width: 100%; height: 352px; border: none; display: block; }
-
-footer {
-    padding: 60px 20px;
+.cake-section {
+    padding: 80px 20px 100px;
     text-align: center;
     position: relative;
     z-index: 1;
 }
+
+.cake-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--deep);
+    margin: 12px 0 8px;
+    letter-spacing: -0.02em;
+}
+
+.cake-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 40px; }
+.cake-wrap { display: inline-block; position: relative; }
+#cakeCanvas { display: block; max-width: 100%; cursor: pointer; }
+
+.wish-msg {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--rose);
+    margin-top: 28px;
+    min-height: 40px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.wish-msg.show { opacity: 1; transform: translateY(0); }
+
+footer { padding: 60px 20px; text-align: center; position: relative; z-index: 1; }
 
 .footer-confetti {
     font-family: 'Playfair Display', serif;
@@ -457,8 +431,7 @@ footer {
 }
 
 .footer-line {
-    width: 80px;
-    height: 1px;
+    width: 80px; height: 1px;
     background: linear-gradient(90deg, transparent, var(--pink), transparent);
     margin: 0 auto;
 }
@@ -506,7 +479,7 @@ footer {
         display: flex;
         align-items: center;
         gap: 8px;
-        transition: transform 0.2s, box-shadow 0.2s;
+        transition: transform 0.2s;
     " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
         <span id="musicIcon">♪</span>
         <span id="musicLabel">Let It Happen</span>
@@ -524,7 +497,7 @@ footer {
             Happy Birthday
             <span>Soupy</span>
         </h1>
-        <p class="hero-sub">The chaos queen officially levels up — eighteen looks good on you.</p>
+        <p class="hero-sub">The retired arsonist that once tried to burn me.</p>
     </div>
     <div class="scroll-hint">
         <div class="scroll-line"></div>
@@ -601,27 +574,28 @@ footer {
     <div class="letter" id="letter">
         <p class="letter-to">For Soupy, on your 18th</p>
         <div class="letter-body">
-            <p>Soup. We met on Roblox. Let that sink in. Out of every server, every random lobby, somehow we ended up being actual friends — and honestly? Best glitch that ever happened to me.</p>
-            <p>A few years later and here we are. You're 18 now which is wild, because I still think about how we just clicked out of nowhere. You've been one of the most genuinely kind and supportive people in my life, and that's not something I take for granted.</p>
-            <p>I hope your 18th is everything. You deserve all the good stuff. Here's to many more years of a friendship that started in a block game and somehow became really real. 🧱❤️</p>
+            <p>Wishing a massive Happy 18th to the person who makes the most random topics interesting. Can't wait to see what this year brings for you!</p>
         </div>
         <div class="letter-sig">
-            — Your Roblox-to-real-life friend
+            — From Vermont
             <span class="letter-heart">♡</span>
         </div>
     </div>
 </section>
 
-<section class="playlist-section">
-    <h2>Your Birthday Playlist</h2>
-    <div class="spotify-wrap">
-        <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DX3rxVfibe1L0" allow="encrypted-media" loading="lazy"></iframe>
+<section class="cake-section">
+    <p class="section-eyebrow">make a wish</p>
+    <h2 class="cake-title">Blow out the candles</h2>
+    <p class="cake-sub">Click each candle to blow it out 🎂</p>
+    <div class="cake-wrap">
+        <canvas id="cakeCanvas" width="400" height="420"></canvas>
+        <div id="wishMsg" class="wish-msg"></div>
     </div>
 </section>
 
 <footer>
     <span class="footer-heart">♡</span>
-    <p class="footer-confetti">Made with effort, chaos, and a lot of love.</p>
+    <p class="footer-confetti">made with autism.</p>
     <div class="footer-line"></div>
 </footer>
 
@@ -717,6 +691,164 @@ function launchConfetti() {
     if (frame) cancelAnimationFrame(frame);
     draw();
 }
+
+(function() {
+    const canvas = document.getElementById('cakeCanvas');
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+
+    const bottomTierY = 270, bottomTierH = 110, bottomTierX = 50, bottomTierW = 300;
+    const topTierY = 160, topTierH = 110, topTierX = 95, topTierW = 210;
+    const candleBaseY = topTierY;
+    const candleH = 44, candleW = 13;
+
+    const candles = [
+        { x: 130, lit: true }, { x: 163, lit: true }, { x: 200, lit: true },
+        { x: 237, lit: true }, { x: 270, lit: true }
+    ];
+
+    let particles = [], allOut = false;
+
+    function drawCake() {
+        ctx.clearRect(0, 0, W, H);
+
+        ctx.beginPath();
+        ctx.ellipse(200, H - 30, 155, 16, 0, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(26,10,20,0.07)';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.roundRect(bottomTierX, bottomTierY, bottomTierW, bottomTierH, 12);
+        ctx.fillStyle = '#f9d0e0'; ctx.fill();
+
+        ctx.beginPath();
+        ctx.roundRect(bottomTierX, bottomTierY, bottomTierW, 18, [12,12,0,0]);
+        ctx.fillStyle = '#ffffff'; ctx.fill();
+
+        [75,115,155,195,240,280,315].forEach(x => {
+            ctx.beginPath();
+            ctx.roundRect(x, bottomTierY, 13, 26, [0,0,6,6]);
+            ctx.fillStyle = '#ffffff'; ctx.fill();
+        });
+
+        [[90,320,'#f472b6'],[150,340,'#fbbf24'],[200,328,'#f472b6'],[255,340,'#fbbf24'],[315,320,'#f472b6']].forEach(([x,y,c]) => {
+            ctx.beginPath(); ctx.arc(x,y,6,0,Math.PI*2); ctx.fillStyle=c; ctx.fill();
+        });
+
+        ctx.beginPath();
+        ctx.roundRect(topTierX, topTierY, topTierW, topTierH, 12);
+        ctx.fillStyle = '#f4a7c3'; ctx.fill();
+
+        ctx.beginPath();
+        ctx.roundRect(topTierX, topTierY, topTierW, 18, [12,12,0,0]);
+        ctx.fillStyle = '#ffffff'; ctx.fill();
+
+        [105,138,170,205,240,268,292].forEach(x => {
+            ctx.beginPath();
+            ctx.roundRect(x, topTierY, 11, 22, [0,0,5,5]);
+            ctx.fillStyle = '#ffffff'; ctx.fill();
+        });
+
+        [[120,220,'#fbbf24'],[200,232,'#f472b6'],[278,220,'#fbbf24']].forEach(([x,y,c]) => {
+            ctx.beginPath(); ctx.arc(x,y,5,0,Math.PI*2); ctx.fillStyle=c; ctx.fill();
+        });
+
+        candles.forEach(c => {
+            const cx = c.x, cy = candleBaseY;
+            ctx.beginPath();
+            ctx.roundRect(cx - candleW/2, cy - candleH, candleW, candleH, 4);
+            ctx.fillStyle = c.lit ? '#fde68a' : '#e5d0f0'; ctx.fill();
+
+            ctx.beginPath();
+            ctx.roundRect(cx - candleW/2, cy - candleH + 10, candleW, 6, 2);
+            ctx.fillStyle = c.lit ? '#fbbf24' : '#c4b0d8'; ctx.fill();
+
+            if (c.lit) {
+                drawFlame(cx, cy - candleH);
+            } else {
+                ctx.beginPath();
+                ctx.moveTo(cx, cy - candleH - 2);
+                ctx.bezierCurveTo(cx+5, cy-candleH-12, cx-5, cy-candleH-20, cx+2, cy-candleH-30);
+                ctx.strokeStyle = 'rgba(150,120,160,0.3)';
+                ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.stroke();
+            }
+        });
+
+        particles.forEach(p => {
+            p.x += p.vx; p.y += p.vy; p.vy += 0.15; p.alpha -= 0.022; p.size *= 0.97;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, Math.max(0, p.size), 0, Math.PI*2);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = Math.max(0, p.alpha); ctx.fill();
+            ctx.globalAlpha = 1;
+        });
+        particles = particles.filter(p => p.alpha > 0);
+    }
+
+    function drawFlame(x, y) {
+        const t = Date.now() / 200, sway = Math.sin(t) * 2;
+        const grd = ctx.createRadialGradient(x+sway, y-10, 0, x+sway, y-10, 18);
+        grd.addColorStop(0, 'rgba(251,191,36,0.3)');
+        grd.addColorStop(1, 'rgba(251,191,36,0)');
+        ctx.beginPath(); ctx.arc(x+sway, y-10, 18, 0, Math.PI*2);
+        ctx.fillStyle = grd; ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(x+sway, y-22);
+        ctx.bezierCurveTo(x+10+sway, y-14, x+8+sway, y-2, x+sway, y);
+        ctx.bezierCurveTo(x-8+sway, y-2, x-10+sway, y-14, x+sway, y-22);
+        ctx.fillStyle = '#fbbf24'; ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(x+sway, y-16);
+        ctx.bezierCurveTo(x+5+sway, y-10, x+4+sway, y-3, x+sway, y-1);
+        ctx.bezierCurveTo(x-4+sway, y-3, x-5+sway, y-10, x+sway, y-16);
+        ctx.fillStyle = '#f97316'; ctx.fill();
+    }
+
+    function spawnPuff(x, y) {
+        const colors = ['#f472b6','#fbbf24','#e11d48','#fb7185','#fde68a','#c084fc'];
+        for (let i = 0; i < 18; i++) {
+            particles.push({
+                x, y,
+                vx: (Math.random()-0.5)*5,
+                vy: -Math.random()*4-2,
+                size: 4+Math.random()*5,
+                alpha: 1,
+                color: colors[Math.floor(Math.random()*colors.length)]
+            });
+        }
+    }
+
+    canvas.addEventListener('click', function(e) {
+        if (allOut) return;
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = W / rect.width;
+        const mx = (e.clientX - rect.left) * scaleX;
+        const my = (e.clientY - rect.top) * scaleX;
+
+        candles.forEach(c => {
+            if (!c.lit) return;
+            const cx = c.x, cy = candleBaseY - candleH;
+            if (mx > cx-22 && mx < cx+22 && my > cy-28 && my < cy+candleH+10) {
+                c.lit = false;
+                spawnPuff(cx, cy);
+                if (candles.every(c => !c.lit)) {
+                    allOut = true;
+                    launchConfetti();
+                    setTimeout(() => {
+                        const msg = document.getElementById('wishMsg');
+                        msg.textContent = '✨ Happy 18th, Soupy! Your wish is on its way — it should arrive within 2 to 3 business days with fast shipping. ✨';
+                        msg.classList.add('show');
+                    }, 600);
+                }
+            }
+        });
+    });
+
+    function loop() { drawCake(); requestAnimationFrame(loop); }
+    loop();
+})();
 
 const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {

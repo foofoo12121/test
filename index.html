@@ -1,336 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Happy 18th Birthday, Soupy!</title>
-
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
-
-    body {
-        margin: 0;
-        font-family: 'Poppins', sans-serif;
-        background: #0d0d0d;
-        color: white;
-        overflow-x: hidden;
-    }
-
-    /* Floating sparkles */
-    .sparkle {
-        position: fixed;
-        width: 6px;
-        height: 6px;
-        background: white;
-        border-radius: 50%;
-        animation: float 6s infinite ease-in-out;
-        opacity: 0.7;
-        pointer-events: none;
-        z-index: 1;
-    }
-
-    @keyframes float {
-        0% { transform: translateY(0) scale(1); opacity: 0.7; }
-        50% { transform: translateY(-80px) scale(1.4); opacity: 1; }
-        100% { transform: translateY(0) scale(1); opacity: 0.7; }
-    }
-
-    header {
-        text-align: center;
-        padding: 100px 20px 60px;
-        animation: fadeIn 2s ease;
-        position: relative;
-        z-index: 2;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(40px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    h1 {
-        font-size: 4rem;
-        background: linear-gradient(90deg, #ff6ec7, #ffcc33);
-        -webkit-background-clip: text;
-        color: transparent;
-        text-shadow: 0 0 20px rgba(255, 100, 200, 0.6);
-        animation: glow 3s infinite alternate;
-    }
-
-    @keyframes glow {
-        from { text-shadow: 0 0 20px rgba(255, 100, 200, 0.6); }
-        to { text-shadow: 0 0 40px rgba(255, 200, 100, 1); }
-    }
-
-    h2 {
-        font-weight: 300;
-        margin-top: -10px;
-        opacity: 0.8;
-    }
-
-    /* Gallery */
-    .gallery {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 25px;
-        padding: 40px 20px;
-        position: relative;
-        z-index: 2;
-    }
-
-    .gallery img {
-        width: 280px;
-        height: 280px;
-        object-fit: cover;
-        border-radius: 20px;
-        box-shadow: 0 0 25px rgba(255,255,255,0.2);
-        transition: 0.4s;
-        animation: popIn 1s ease forwards;
-        opacity: 0;
-    }
-
-    @keyframes popIn {
-        from { transform: scale(0.7); opacity: 0; }
-        to { transform: scale(1); opacity: 1; }
-    }
-
-    .gallery img:hover {
-        transform: scale(1.08) rotate(1deg);
-        box-shadow: 0 0 40px rgba(255,255,255,0.4);
-    }
-
-    /* Opening card section */
-    .card-section {
-        text-align: center;
-        margin: 60px 0;
-        position: relative;
-        z-index: 2;
-    }
-
-    .card-title {
-        font-size: 2rem;
-        margin-bottom: 20px;
-    }
-
-    .birthday-card {
-        width: 350px;
-        height: 250px;
-        margin: auto;
-        perspective: 1200px;
-        cursor: pointer;
-    }
-
-    .card-inner {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        transform-style: preserve-3d;
-        transition: transform 1.2s ease;
-    }
-
-    .card-front, .card-inside {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border-radius: 15px;
-        padding: 25px;
-        box-sizing: border-box;
-        backface-visibility: hidden;
-        box-shadow: 0 0 25px rgba(255,255,255,0.2);
-    }
-
-    .card-front {
-        background: linear-gradient(135deg, #ff6ec7, #ffcc33);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        color: #111;
-    }
-
-    .card-front h3 {
-        font-size: 1.8rem;
-        margin-bottom: 10px;
-    }
-
-    .card-front p {
-        font-size: 1rem;
-        opacity: 0.8;
-    }
-
-    .card-inside {
-        background: #1a1a1a;
-        transform: rotateY(180deg);
-        color: white;
-        text-align: left;
-        overflow-y: auto;
-    }
-
-    .card-inside h3 {
-        margin-top: 0;
-        margin-bottom: 10px;
-    }
-
-    .card-inside p {
-        line-height: 1.5;
-        font-size: 0.95rem;
-    }
-
-    /* Timeline */
-    .timeline {
-        margin: 80px auto;
-        width: 80%;
-        max-width: 800px;
-        position: relative;
-        z-index: 2;
-    }
-
-    .timeline h2 {
-        text-align: center;
-        margin-bottom: 25px;
-    }
-
-    .timeline-item {
-        background: #1a1a1a;
-        padding: 20px;
-        border-radius: 15px;
-        margin-bottom: 20px;
-        box-shadow: 0 0 20px rgba(255,255,255,0.1);
-        animation: fadeIn 1.5s ease;
-    }
-
-    /* Playlist */
-    .playlist {
-        margin: 60px auto;
-        width: 80%;
-        max-width: 700px;
-        text-align: center;
-        position: relative;
-        z-index: 2;
-    }
-
-    .playlist h2 {
-        margin-bottom: 20px;
-    }
-
-    .playlist iframe {
-        width: 100%;
-        height: 380px;
-        border-radius: 20px;
-        box-shadow: 0 0 25px rgba(255,255,255,0.2);
-        border: none;
-    }
-
-    footer {
-        text-align: center;
-        padding: 30px;
-        opacity: 0.7;
-        animation: pulse 3s infinite;
-        position: relative;
-        z-index: 2;
-    }
-
-    @keyframes pulse {
-        0% { opacity: 0.6; }
-        50% { opacity: 1; }
-        100% { opacity: 0.6; }
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-        h1 {
-            font-size: 2.6rem;
-        }
-        .birthday-card {
-            width: 90%;
-            height: 260px;
-        }
-        .gallery img {
-            width: 90vw;
-            height: 260px;
-        }
-    }
-</style>
-</head>
-
-<body>
-
-<!-- Sparkles -->
-<script>
-for (let i = 0; i < 40; i++) {
-    let s = document.createElement("div");
-    s.className = "sparkle";
-    s.style.left = Math.random() * 100 + "vw";
-    s.style.top = Math.random() * 100 + "vh";
-    s.style.animationDelay = Math.random() * 5 + "s";
-    document.body.appendChild(s);
-}
-</script>
-
-<header>
-    <h1>Happy 18th Birthday, Soupy!</h1>
-    <h2>The chaos queen officially levels up</h2>
-</header>
-
-<section class="gallery">
-    <!-- Replace these with your real pics -->
-    <img src="pic1.jpg" alt="You and Soupy 1">
-    <img src="pic2.jpg" alt="You and Soupy 2">
-    <img src="pic3.jpg" alt="You and Soupy 3">
-    <img src="pic4.jpg" alt="You and Soupy 4">
-</section>
-
+<!-- Birthday Card Section -->
 <section class="card-section">
-    <h2 class="card-title">💗 Click the Card</h2>
+    <h2 class="card-title">Open Your Card</h2>
 
-    <div class="birthday-card" onclick="openCard()">
+    <div class="birthday-card" onclick="toggleCard()">
         <div class="card-inner" id="cardInner">
-            <div class="card-front">
-                <h3>Happy 18th, Soupy 🎉</h3>
-                <p>Click to open</p>
+            
+            <!-- LEFT SIDE (Front Cover) -->
+            <div class="card-left">
+                <h3>Happy 18th, Soupy</h3>
+                <p>Tap to open</p>
             </div>
 
-            <div class="card-inside">
-                <h3>💌 A Message For You</h3>
+            <!-- RIGHT SIDE (Inside Message) -->
+            <div class="card-right">
+                <h3>A Message For You</h3>
                 <p>
-                    Soup… you’re officially 18, but you’ve been legendary long before that.<br><br>
-                    I’m grateful for every laugh, every chaotic moment, and every memory we’ve made.  
-                    You make life lighter, funnier, and way more interesting.  
-                    I hope this year brings you everything you deserve — happiness, growth, and blessings.  
-                    You’re one of a kind, and I’m glad I get to be part of your story.
+                    Soup… I don’t really know how to say this in a fancy way, so I’ll just say it the way it sits in my head.  
+                    You’re someone I genuinely appreciate.  
+                    You make things lighter, funnier, and way less boring.  
+                    I’m glad I got to know you.  
+                    I hope this year hits you with good people, good moments, and the kind of happiness that sticks around.
                 </p>
-                <p>— From someone who actually cares</p>
+                <p>— From Vermont</p>
             </div>
+
         </div>
     </div>
 </section>
 
-<section class="timeline">
-    <h2>📸 Our Memories</h2>
-    <div class="timeline-item">The time we laughed way too hard at nothing.</div>
-    <div class="timeline-item">The random adventures that weren’t planned but hit different.</div>
-    <div class="timeline-item">The late-night talks that made everything feel lighter.</div>
-</section>
+<style>
+.card-section {
+    text-align: center;
+    margin: 80px 0;
+}
 
-<section class="playlist">
-    <h2>🎶 Your Birthday Playlist</h2>
-    <!-- Replace with your own playlist if you want -->
-    <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DX3rxVfibe1L0" allow="encrypted-media"></iframe>
-</section>
+.card-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
 
-<footer>
-    Made for Soupy with effort, chaos, and love 🎂
-</footer>
+/* Card container */
+.birthday-card {
+    width: 50vw;
+    height: 300px;
+    margin: auto;
+    perspective: 2000px;
+    cursor: pointer;
+}
+
+/* Inner wrapper */
+.card-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transform-style: preserve-3d;
+    transition: transform 1.2s ease;
+}
+
+/* Left = front cover */
+.card-left {
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff6ec7, #ffcc33);
+    border-radius: 15px 0 0 15px;
+    box-shadow: 0 0 25px rgba(255,255,255,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #111;
+    backface-visibility: hidden;
+    transform-origin: left;
+    padding: 25px;
+}
+
+/* Right = inside message */
+.card-right {
+    width: 50%;
+    height: 100%;
+    background: #1a1a1a;
+    border-radius: 0 15px 15px 0;
+    box-shadow: 0 0 25px rgba(255,255,255,0.2);
+    color: white;
+    padding: 25px;
+    backface-visibility: hidden;
+    transform-origin: right;
+    transform: rotateY(180deg);
+}
+
+.card-right p {
+    line-height: 1.5;
+}
+
+/* When opened */
+.card-open .card-left {
+    transform: rotateY(-180deg);
+}
+
+.card-open .card-right {
+    transform: rotateY(0deg);
+}
+</style>
 
 <script>
-function openCard() {
+function toggleCard() {
     const card = document.getElementById("cardInner");
-    if (card.style.transform === "rotateY(180deg)") {
-        card.style.transform = "rotateY(0deg)";
-    } else {
-        card.style.transform = "rotateY(180deg)";
-    }
+    card.classList.toggle("card-open");
 }
 </script>
-
-</body>
-</html>

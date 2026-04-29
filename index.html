@@ -23,7 +23,7 @@
             line-height: 1.6;
         }
 
-        /* Subtle Grain Overlay for a "Real" Texture */
+        /* Subtle Grain Overlay */
         body::before {
             content: "";
             position: fixed;
@@ -54,14 +54,13 @@
         }
 
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 4px;
             opacity: 0.6;
             margin-top: 10px;
         }
 
-        /* Gallery - Masonry Styleish */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -76,17 +75,15 @@
             height: 300px;
             object-fit: cover;
             border-radius: 12px;
-            filter: grayscale(40%);
+            filter: grayscale(100%);
             transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .gallery img:hover {
             filter: grayscale(0%);
-            transform: scale(1.03) translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            transform: scale(1.03);
         }
 
-        /* The Card - Less "Template-y" */
         .card-container {
             display: flex;
             flex-direction: column;
@@ -137,9 +134,6 @@
             transform: rotateY(180deg);
         }
 
-        .card-back p { font-size: 1.1rem; color: #333; }
-
-        /* Memories Section */
         .memories {
             max-width: 700px;
             margin: 60px auto;
@@ -154,24 +148,6 @@
             align-items: center;
         }
 
-        .memory-num { font-family: 'Space Grotesk'; opacity: 0.3; }
-
-        /* Spotify */
-        .playlist-wrapper {
-            max-width: 800px;
-            margin: 100px auto;
-            padding: 0 20px;
-        }
-
-        iframe { border-radius: 20px; border: none; width: 100%; }
-
-        footer {
-            text-align: center;
-            padding: 100px 20px;
-            opacity: 0.4;
-            font-size: 0.9rem;
-        }
-
         .chaos-btn {
             background: transparent;
             border: 1px solid var(--accent);
@@ -180,19 +156,23 @@
             border-radius: 50px;
             cursor: pointer;
             margin-top: 30px;
-            transition: 0.3s;
+            font-family: 'Space Grotesk';
         }
 
-        .chaos-btn:hover { background: var(--accent); color: white; }
-
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            opacity: 0.4;
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="subtitle">Level 18 unlocked</div>
-    <h1>SOUPY.</h1>
-    <button class="chaos-btn" onclick="triggerChaos()">Toggle Chaos Mode</button>
+    <div class="subtitle">Soupy is officially an adult</div>
+    <h1>LEVEL 18.</h1>
+    <button class="chaos-btn" onclick="triggerChaos()">Toggle Chaos</button>
 </header>
 
 <section class="gallery">
@@ -206,15 +186,16 @@
     <div class="birthday-card" onclick="this.querySelector('.card-inner').classList.toggle('flipped')">
         <div class="card-inner">
             <div class="card-front">
-                <h2 style="margin:0">Don't open this.</h2>
-                <p style="opacity: 0.5;">(Unless you're actually 18 now)</p>
+                <h2 style="margin:0">Important Update</h2>
+                <p style="opacity: 0.5;">Click to view</p>
             </div>
             <div class="card-back">
-                <h2 style="margin:0">You made it. 🥂</h2>
+                <h2 style="margin:0">Happy 18th, Soup. 🥂</h2>
                 <p>
-                    Soup—honestly, it’s wild you’re legally an adult now. Don’t let it get to your head, you're still the same menace we know and love. Thanks for being the person who makes the boring days actually fun. Hope 18 is as loud and chaotic as you are.
+                    You finally made it to adulthood without causing an international incident. Impressive. <br><br>
+                    Honestly, thanks for being one of the real ones. Life's definitely less boring with you around to keep things chaotic. Hope your day is solid.
                 </p>
-                <strong>— Stay legendary.</strong>
+                <strong>— Cheers.</strong>
             </div>
         </div>
     </div>
@@ -222,26 +203,26 @@
 
 <section class="memories">
     <div class="memory-row">
-        <span class="memory-num">01</span>
-        <span>That one time we laughed until it physically hurt.</span>
+        <span>01</span>
+        <span>The "accidental" chaos we caused.</span>
     </div>
     <div class="memory-row">
-        <span class="memory-num">02</span>
-        <span>The "bad" ideas that turned into the best stories.</span>
+        <span>02</span>
+        <span>Every time we laughed at stuff that wasn't even funny.</span>
     </div>
     <div class="memory-row">
-        <span class="memory-num">03</span>
-        <span>All the late night rants that kept us sane.</span>
+        <span>03</span>
+        <span>The random talks that kept things interesting.</span>
     </div>
 </section>
 
-<div class="playlist-wrapper">
-    <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DX3rxVfibe1L0?utm_source=generator&theme=0" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<div style="max-width: 800px; margin: 40px auto; padding: 20px;">
+    <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DX3rxVfibe1L0" width="100%" height="380" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 </div>
 
 <footer>
     Designed for the Chaos Queen. <br>
-    No AI was harmed in the making of this birthday.
+    Built with zero sappy stuff.
 </footer>
 
 <script>
@@ -250,20 +231,7 @@
         document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
         setTimeout(() => {
             document.body.style.backgroundColor = '#080808';
-        }, 200);
-    }
-
-    // Sparkles
-    for (let i = 0; i < 30; i++) {
-        let s = document.createElement("div");
-        s.style.position = 'fixed';
-        s.style.width = '2px';
-        s.style.height = '2px';
-        s.style.background = 'white';
-        s.style.left = Math.random() * 100 + 'vw';
-        s.style.top = Math.random() * 100 + 'vh';
-        s.style.opacity = Math.random();
-        document.body.appendChild(s);
+        }, 150);
     }
 </script>
 

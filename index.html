@@ -1,18 +1,17 @@
-<!-- Birthday Card Section -->
 <section class="card-section">
     <h2 class="card-title">Open Your Card</h2>
 
     <div class="birthday-card" onclick="toggleCard()">
         <div class="card-inner" id="cardInner">
             
-            <!-- LEFT SIDE (Front Cover) -->
-            <div class="card-left">
+            <!-- FRONT COVER -->
+            <div class="card-front">
                 <h3>Happy 18th, Soupy</h3>
                 <p>Tap to open</p>
             </div>
 
-            <!-- RIGHT SIDE (Inside Message) -->
-            <div class="card-right">
+            <!-- INSIDE MESSAGE -->
+            <div class="card-inside">
                 <h3>A Message For You</h3>
                 <p>
                     Soup… I don’t really know how to say this in a fancy way, so I’ll just say it the way it sits in my head.  
@@ -39,65 +38,58 @@
     margin-bottom: 20px;
 }
 
-/* Card container */
 .birthday-card {
-    width: 50vw;
-    height: 300px;
+    width: 350px;
+    height: 250px;
     margin: auto;
-    perspective: 2000px;
+    perspective: 1200px;
     cursor: pointer;
 }
 
-/* Inner wrapper */
 .card-inner {
     width: 100%;
     height: 100%;
-    display: flex;
+    position: relative;
     transform-style: preserve-3d;
     transition: transform 1.2s ease;
 }
 
-/* Left = front cover */
-.card-left {
-    width: 50%;
+.card-front, .card-inside {
+    position: absolute;
+    width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #ff6ec7, #ffcc33);
-    border-radius: 15px 0 0 15px;
+    border-radius: 15px;
+    padding: 25px;
+    box-sizing: border-box;
+    backface-visibility: hidden;
     box-shadow: 0 0 25px rgba(255,255,255,0.2);
+}
+
+/* FRONT COVER */
+.card-front {
+    background: linear-gradient(135deg, #ff6ec7, #ffcc33);
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: #111;
-    backface-visibility: hidden;
-    transform-origin: left;
-    padding: 25px;
 }
 
-/* Right = inside message */
-.card-right {
-    width: 50%;
-    height: 100%;
+/* INSIDE */
+.card-inside {
     background: #1a1a1a;
-    border-radius: 0 15px 15px 0;
-    box-shadow: 0 0 25px rgba(255,255,255,0.2);
-    color: white;
-    padding: 25px;
-    backface-visibility: hidden;
-    transform-origin: right;
     transform: rotateY(180deg);
+    color: white;
+    text-align: left;
+    overflow-y: auto;
 }
 
-.card-right p {
+.card-inside p {
     line-height: 1.5;
 }
 
-/* When opened */
-.card-open .card-left {
-    transform: rotateY(-180deg);
-}
-
-.card-open .card-right {
-    transform: rotateY(0deg);
+/* OPEN ANIMATION */
+.card-open {
+    transform: rotateY(180deg);
 }
 </style>
 

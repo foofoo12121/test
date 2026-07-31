@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soupy Turns 18</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --pink: #f472b6;
+    --warm: #fbbf24;
+    --cream: #fdf6ee;
+    --deep: #1a0a14;
+    --rose: #e11d48;
+    --blush: #fce7f3;
+    --text: #2d0a1e;
+    --muted: #7c4d6a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero {
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 40px 20px;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 60% 50% at 20% 20%, rgba(244,114,182,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 80% 80%, rgba(251,191,36,0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(225,29,72,0.06) 0%, transparent 70%),
+        var(--cream);
+    z-index: 1;
+}
+
+.ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(244,114,182,0.15);
+    animation: spin linear infinite;
+    z-index: 1;
+}
+.ring-1 { width: 500px; height: 500px; top: 50%; left: 50%; translate: -50% -50%; animation-duration: 40s; }
+.ring-2 { width: 700px; height: 700px; top: 50%; left: 50%; translate: -50% -50%; animation-duration: 60s; animation-direction: reverse; border-color: rgba(251,191,36,0.12); }
+.ring-3 { width: 900px; height: 900px; top: 50%; left: 50%; translate: -50% -50%; animation-duration: 80s; border-color: rgba(244,114,182,0.07); }
+
+@keyframes spin { to { rotate: 360deg; } }
+
+.ring-1::before {
+    content: '';
+    position: absolute;
+    width: 8px; height: 8px;
+    background: var(--pink);
+    border-radius: 50%;
+    top: -4px; left: 50%;
+    translate: -50% 0;
+    box-shadow: 0 0 12px rgba(244,114,182,0.6);
+}
+
+.hero-content { position: relative; z-index: 2; text-align: center; max-width: 700px; }
+
+.age-badge {
+    display: inline-block;
+    background: var(--deep);
+    color: var(--warm);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease both;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    animation: fadeUp 0.8s 0.15s ease both;
+    color: var(--deep);
+}
+
+.hero-title span { display: block; font-style: italic; color: var(--rose); }
+
+.hero-sub {
+    margin-top: 24px;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: var(--muted);
+    font-weight: 300;
+    animation: fadeUp 0.8s 0.3s ease both;
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 40px; left: 50%;
+    translate: -50% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: fadeUp 1s 1s ease both;
+    z-index: 2;
+}
+
+.scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--pink), transparent);
+    animation: scrollPulse 2s ease infinite;
+}
+
+@keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.balloons-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 6;
+}
+
+.balloon {
+    position: absolute;
+    bottom: -160px;
+    width: 46px;
+    height: 58px;
+    border-radius: 50% 50% 50% 46%;
+    opacity: 0;
+    animation: floatUp linear infinite;
+    box-shadow: inset -6px -8px 14px rgba(26,10,20,0.12), inset 6px 6px 10px rgba(255,255,255,0.3);
+}
+
+.balloon::before {
+    content: '';
+    position: absolute;
+    bottom: -9px;
+    left: 50%;
+    translate: -50% 0;
+    width: 0; height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 9px solid rgba(26,10,20,0.35);
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -46px;
+    left: 50%;
+    width: 1px;
+    height: 46px;
+    background: rgba(26,10,20,0.2);
+}
+
+@keyframes floatUp {
+    0%   { transform: translate(0, 0) rotate(-4deg); opacity: 0; }
+    6%   { opacity: 0.85; }
+    50%  { transform: translate(26px, -58vh) rotate(4deg); }
+    94%  { opacity: 0.85; }
+    100% { transform: translate(-14px, -118vh) rotate(-4deg); opacity: 0; }
+}
+
+.balloon:nth-child(1) { left: 5%;  background: var(--pink); animation-duration: 17s; animation-delay: 0s; }
+.balloon:nth-child(2) { left: 16%; background: var(--warm); width: 40px; height: 50px; animation-duration: 20s; animation-delay: 3s; }
+.balloon:nth-child(3) { left: 29%; background: var(--rose); animation-duration: 15s; animation-delay: 7s; }
+.balloon:nth-child(4) { left: 48%; background: var(--pink); width: 52px; height: 66px; animation-duration: 22s; animation-delay: 1.5s; }
+.balloon:nth-child(5) { left: 62%; background: var(--warm); animation-duration: 18s; animation-delay: 10s; }
+.balloon:nth-child(6) { left: 76%; background: var(--rose); width: 42px; height: 54px; animation-duration: 21s; animation-delay: 4.5s; }
+.balloon:nth-child(7) { left: 89%; background: var(--pink); animation-duration: 16s; animation-delay: 8.5s; }
+.balloon:nth-child(8) { left: 40%; background: var(--warm); width: 38px; height: 48px; animation-duration: 19s; animation-delay: 12s; }
+
+.card-section {
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    position: relative;
+    z-index: 1;
+}
+
+.section-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+}
+
+.envelope-wrap { width: min(440px, 92vw); perspective: 1600px; }
+.envelope { width: 100%; position: relative; cursor: pointer; }
+
+.env-body {
+    width: 100%;
+    padding-top: 62%;
+    background: var(--deep);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(26,10,20,0.25), 0 4px 16px rgba(0,0,0,0.1);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s;
+}
+
+.envelope:hover .env-body {
+    transform: translateY(-6px);
+    box-shadow: 0 40px 100px rgba(26,10,20,0.3), 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.env-body-inner {
+    position: absolute; inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.env-flap {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    overflow: hidden;
+    height: 50%;
+    transform-origin: top center;
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 2;
+}
+
+.env-flap::before {
+    content: '';
+    display: block;
+    width: 0; height: 0;
+    border-left: 220px solid transparent;
+    border-right: 220px solid transparent;
+    border-top: 140px solid #2a1220;
+}
+
+.envelope.open .env-flap { transform: rotateX(-180deg); }
+
+.env-stripe {
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--pink), var(--warm), var(--pink), transparent);
+}
+
+.env-label {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+}
+
+.env-cta {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-top: 4px;
+}
+
+.letter {
+    width: min(440px, 92vw);
+    background: white;
+    border-radius: 16px;
+    padding: 40px 36px;
+    box-shadow: 0 20px 60px rgba(26,10,20,0.12);
+    position: relative;
+    overflow: hidden;
+    display: none;
+    animation: letterReveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.letter.visible { display: block; }
+
+@keyframes letterReveal {
+    from { opacity: 0; transform: translateY(30px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.letter::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--rose), var(--pink), var(--warm));
+}
+
+.letter-to {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.letter-body {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 32px;
+}
+
+.letter-body p + p { margin-top: 16px; }
+
+.letter-sig {
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding-top: 20px;
+}
+
+.letter-heart {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--rose);
+    display: block;
+    margin-top: 8px;
+}
+
+.cake-section {
+    padding: 80px 20px 100px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.cake-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--deep);
+    margin: 12px 0 8px;
+    letter-spacing: -0.02em;
+}
+
+.cake-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 40px; }
+.cake-wrap { display: inline-block; position: relative; }
+#cakeCanvas { display: block; max-width: 100%; cursor: pointer; }
+
+.wish-msg {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--rose);
+    margin-top: 28px;
+    min-height: 40px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.wish-msg.show { opacity: 1; transform: translateY(0); }
+
+footer { padding: 60px 20px; text-align: center; position: relative; z-index: 1; }
+
+.footer-confetti {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 16px;
+}
+
+.footer-heart {
+    display: block;
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+    animation: heartbeat 2s ease infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    20% { transform: scale(1.2); }
+    40% { transform: scale(1); }
+    60% { transform: scale(1.1); }
+}
+
+.footer-line {
+    width: 80px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--pink), transparent);
+    margin: 0 auto;
+}
+
+.confetti-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.flip-section {
+    padding: 20px 20px 100px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.flip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px;
+    margin-top: 40px;
+}
+
+.flip-card-wrap {
+    width: 200px;
+    height: 260px;
+    perspective: 1200px;
+    transition: transform 0.3s ease;
+}
+
+.flip-card-wrap:hover { transform: translateY(-6px); }
+
+.flip-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped { transform: rotateY(180deg); }
+
+.flip-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 20px;
+}
+
+.flip-front {
+    background: var(--deep);
+    box-shadow: 0 20px 50px rgba(26,10,20,0.2);
+}
+
+.flip-num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 2.2rem;
+    color: var(--warm);
+}
+
+.flip-tap {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+}
+
+.flip-back {
+    background: linear-gradient(135deg, var(--rose), var(--pink));
+    transform: rotateY(180deg);
+    box-shadow: 0 20px 50px rgba(225,29,72,0.25);
+}
+
+.flip-back p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: white;
+    line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+    .hero-title { font-size: 3.2rem; }
+    .env-flap::before {
+        border-left-width: calc(50vw - 10px);
+        border-right-width: calc(50vw - 10px);
+        border-top-width: 110px;
+    }
+    .balloon { width: 34px; height: 44px; }
+    .flip-card-wrap { width: 42vw; max-width: 175px; height: 225px; }
+}
+</style>
+</head>
+
+<body>
+
+<canvas class="confetti-canvas" id="confettiCanvas"></canvas>
+
+<div class="balloons-container" aria-hidden="true">
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="https://raw.githubusercontent.com/foofoo12121/test/main/letithappen.mp3" type="audio/mpeg">
+</audio>
+
+<div style="position:fixed; bottom:24px; right:24px; z-index:100;">
+    <button id="musicBtn" onclick="toggleMusic()" style="
+        background: var(--deep);
+        color: white;
+        border: none;
+        border-radius: 100px;
+        padding: 10px 18px;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        box-shadow: 0 8px 24px rgba(26,10,20,0.25);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: transform 0.2s;
+    " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <span id="musicIcon">♪</span>
+        <span id="musicLabel">Let It Happen</span>
+    </button>
+</div>
+
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="ring ring-1"></div>
+    <div class="ring ring-2"></div>
+    <div class="ring ring-3"></div>
+    <div class="hero-content">
+        <div class="age-badge">July 31 · 18 Years Old</div>
+        <h1 class="hero-title">
+            Happy Birthday
+            <span>Soupy</span>
+        </h1>
+        <p class="hero-sub">The retired arsonist that once tried to burn me.</p>
+    </div>
+    <div class="scroll-hint">
+        <div class="scroll-line"></div>
+        scroll
+    </div>
+</section>
+
+<section class="flip-section">
+    <p class="section-eyebrow">a few truths</p>
+    <h2 class="cake-title">Just so you know</h2>
+    <p class="cake-sub">tap each card</p>
+    <div class="flip-grid">
+        <div class="flip-card-wrap">
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-face flip-front">
+                    <span class="flip-num">01</span>
+                    <span class="flip-tap">tap to reveal</span>
+                </div>
+                <div class="flip-face flip-back">
+                    <p>You are smart</p>
+                </div>
+            </div>
+        </div>
+        <div class="flip-card-wrap">
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-face flip-front">
+                    <span class="flip-num">02</span>
+                    <span class="flip-tap">tap to reveal</span>
+                </div>
+                <div class="flip-face flip-back">
+                    <p>You are funny</p>
+                </div>
+            </div>
+        </div>
+        <div class="flip-card-wrap">
+            <div class="flip-card" onclick="flipCard(this)">
+                <div class="flip-face flip-front">
+                    <span class="flip-num">03</span>
+                    <span class="flip-tap">tap to reveal</span>
+                </div>
+                <div class="flip-face flip-back">
+                    <p>You make amazing food</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="card-section">
+    <p class="section-eyebrow">Something special</p>
+    <div class="envelope-wrap">
+        <div class="envelope" id="envelope" onclick="openCard()">
+            <div class="env-body">
+                <div class="env-flap" id="envFlap"></div>
+                <div class="env-body-inner">
+                    <div class="env-stripe"></div>
+                    <p class="env-label">A note for Soupy</p>
+                    <p class="env-cta">tap to open</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="letter" id="letter">
+        <p class="letter-to">For Soupy, on your 18th</p>
+        <div class="letter-body">
+            <p>Wishing a massive Happy 18th to the person who makes the most random topics interesting. Can't wait to see what this year brings for you!</p>
+        </div>
+        <div class="letter-sig">
+            — From Vermont
+            <span class="letter-heart">♡</span>
+        </div>
+    </div>
+</section>
+
+<section class="cake-section">
+    <p class="section-eyebrow">make a wish</p>
+    <h2 class="cake-title">Blow out the candles</h2>
+    <p class="cake-sub">Click each candle to blow it out 🎂</p>
+    <div class="cake-wrap">
+        <canvas id="cakeCanvas" width="400" height="420"></canvas>
+        <div id="wishMsg" class="wish-msg"></div>
+    </div>
+</section>
+
+<footer>
+    <p class="footer-confetti">made with autism.</p>
+    <div class="footer-line"></div>
+</footer>
+
+<script>
+const music = document.getElementById('bgMusic');
+const musicIcon = document.getElementById('musicIcon');
+const musicLabel = document.getElementById('musicLabel');
+let playing = false;
+
+music.volume = 0.2;
+
+document.addEventListener('click', function startOnFirstClick() {
+    if (!playing) {
+        music.play().then(() => {
+            playing = true;
+            musicIcon.textContent = '♪';
+            musicLabel.textContent = 'Let It Happen';
+        }).catch(() => {});
+    }
+    document.removeEventListener('click', startOnFirstClick);
+}, { once: false });
+
+function toggleMusic() {
+    if (playing) {
+        music.pause();
+        playing = false;
+        musicIcon.textContent = '▶';
+        musicLabel.textContent = 'Play music';
+    } else {
+        music.play();
+        playing = true;
+        musicIcon.textContent = '♪';
+        musicLabel.textContent = 'Let It Happen';
+    }
+}
+
+function flipCard(card) {
+    card.classList.toggle('flipped');
+}
+
+function openCard() {
+    const env = document.getElementById('envelope');
+    const letter = document.getElementById('letter');
+    env.classList.toggle('open');
+    if (env.classList.contains('open')) {
+        setTimeout(() => {
+            letter.classList.add('visible');
+            letter.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 600);
+        launchConfetti();
+    } else {
+        letter.classList.remove('visible');
+    }
+}
+
+function launchConfetti() {
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const colors = ['#f472b6','#fbbf24','#e11d48','#fb7185','#fde68a','#f9a8d4'];
+    const pieces = [];
+    for (let i = 0; i < 120; i++) {
+        pieces.push({
+            x: Math.random() * canvas.width,
+            y: -10 - Math.random() * 200,
+            vx: (Math.random() - 0.5) * 4,
+            vy: 3 + Math.random() * 4,
+            rot: Math.random() * Math.PI * 2,
+            rotV: (Math.random() - 0.5) * 0.2,
+            w: 6 + Math.random() * 8,
+            h: 3 + Math.random() * 4,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            alpha: 1
+        });
+    }
+    let frame;
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let alive = false;
+        pieces.forEach(p => {
+            if (p.y > canvas.height + 20) return;
+            alive = true;
+            p.x += p.vx; p.y += p.vy; p.rot += p.rotV; p.vy += 0.05;
+            if (p.y > canvas.height * 0.8) p.alpha -= 0.015;
+            ctx.save();
+            ctx.globalAlpha = Math.max(0, p.alpha);
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rot);
+            ctx.fillStyle = p.color;
+            ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+            ctx.restore();
+        });
+        if (alive) frame = requestAnimationFrame(draw);
+        else ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    if (frame) cancelAnimationFrame(frame);
+    draw();
+}
+
+(function() {
+    const canvas = document.getElementById('cakeCanvas');
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+
+    const bottomTierY = 270, bottomTierH = 110, bottomTierX = 50, bottomTierW = 300;
+    const topTierY = 160, topTierH = 110, topTierX = 95, topTierW = 210;
+    const candleBaseY = topTierY;
+    const candleH = 44, candleW = 13;
+
+    const candles = [
+        { x: 130, lit: true }, { x: 163, lit: true }, { x: 200, lit: true },
+        { x: 237, lit: true }, { x: 270, lit: true }
+    ];
+
+    let particles = [], allOut = false;
+
+    function drawCake() {
+        ctx.clearRect(0, 0, W, H);
+
+        ctx.beginPath();
+        ctx.ellipse(200, H - 30, 155, 16, 0, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(26,10,20,0.07)';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.roundRect(bottomTierX, bottomTierY, bottomTierW, bottomTierH, 12);
+        ctx.fillStyle = '#f9d0e0'; ctx.fill();
+
+        ctx.beginPath();
+        ctx.roundRect(bottomTierX, bottomTierY, bottomTierW, 18, [12,12,0,0]);
+        ctx.fillStyle = '#ffffff'; ctx.fill();
+
+        [75,115,155,195,240,280,315].forEach(x => {
+            ctx.beginPath();
+            ctx.roundRect(x, bottomTierY, 13, 26, [0,0,6,6]);
+            ctx.fillStyle = '#ffffff'; ctx.fill();
+        });
+
+        [[90,320,'#f472b6'],[150,340,'#fbbf24'],[200,328,'#f472b6'],[255,340,'#fbbf24'],[315,320,'#f472b6']].forEach(([x,y,c]) => {
+            ctx.beginPath(); ctx.arc(x,y,6,0,Math.PI*2); ctx.fillStyle=c; ctx.fill();
+        });
+
+        ctx.beginPath();
+        ctx.roundRect(topTierX, topTierY, topTierW, topTierH, 12);
+        ctx.fillStyle = '#f4a7c3'; ctx.fill();
+
+        ctx.beginPath();
+        ctx.roundRect(topTierX, topTierY, topTierW, 18, [12,12,0,0]);
+        ctx.fillStyle = '#ffffff'; ctx.fill();
+
+        [105,138,170,205,240,268,292].forEach(x => {
+            ctx.beginPath();
+            ctx.roundRect(x, topTierY, 11, 22, [0,0,5,5]);
+            ctx.fillStyle = '#ffffff'; ctx.fill();
+        });
+
+        [[120,220,'#fbbf24'],[200,232,'#f472b6'],[278,220,'#fbbf24']].forEach(([x,y,c]) => {
+            ctx.beginPath(); ctx.arc(x,y,5,0,Math.PI*2); ctx.fillStyle=c; ctx.fill();
+        });
+
+        candles.forEach(c => {
+            const cx = c.x, cy = candleBaseY;
+            ctx.beginPath();
+            ctx.roundRect(cx - candleW/2, cy - candleH, candleW, candleH, 4);
+            ctx.fillStyle = c.lit ? '#fde68a' : '#e5d0f0'; ctx.fill();
+
+            ctx.beginPath();
+            ctx.roundRect(cx - candleW/2, cy - candleH + 10, candleW, 6, 2);
+            ctx.fillStyle = c.lit ? '#fbbf24' : '#c4b0d8'; ctx.fill();
+
+            if (c.lit) {
+                drawFlame(cx, cy - candleH);
+            } else {
+                ctx.beginPath();
+                ctx.moveTo(cx, cy - candleH - 2);
+                ctx.bezierCurveTo(cx+5, cy-candleH-12, cx-5, cy-candleH-20, cx+2, cy-candleH-30);
+                ctx.strokeStyle = 'rgba(150,120,160,0.3)';
+                ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.stroke();
+            }
+        });
+
+        particles.forEach(p => {
+            p.x += p.vx; p.y += p.vy; p.vy += 0.15; p.alpha -= 0.022; p.size *= 0.97;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, Math.max(0, p.size), 0, Math.PI*2);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = Math.max(0, p.alpha); ctx.fill();
+            ctx.globalAlpha = 1;
+        });
+        particles = particles.filter(p => p.alpha > 0);
+    }
+
+    function drawFlame(x, y) {
+        const t = Date.now() / 200, sway = Math.sin(t) * 2;
+        const grd = ctx.createRadialGradient(x+sway, y-10, 0, x+sway, y-10, 18);
+        grd.addColorStop(0, 'rgba(251,191,36,0.3)');
+        grd.addColorStop(1, 'rgba(251,191,36,0)');
+        ctx.beginPath(); ctx.arc(x+sway, y-10, 18, 0, Math.PI*2);
+        ctx.fillStyle = grd; ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(x+sway, y-22);
+        ctx.bezierCurveTo(x+10+sway, y-14, x+8+sway, y-2, x+sway, y);
+        ctx.bezierCurveTo(x-8+sway, y-2, x-10+sway, y-14, x+sway, y-22);
+        ctx.fillStyle = '#fbbf24'; ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(x+sway, y-16);
+        ctx.bezierCurveTo(x+5+sway, y-10, x+4+sway, y-3, x+sway, y-1);
+        ctx.bezierCurveTo(x-4+sway, y-3, x-5+sway, y-10, x+sway, y-16);
+        ctx.fillStyle = '#f97316'; ctx.fill();
+    }
+
+    function spawnPuff(x, y) {
+        const colors = ['#f472b6','#fbbf24','#e11d48','#fb7185','#fde68a','#c084fc'];
+        for (let i = 0; i < 18; i++) {
+            particles.push({
+                x, y,
+                vx: (Math.random()-0.5)*5,
+                vy: -Math.random()*4-2,
+                size: 4+Math.random()*5,
+                alpha: 1,
+                color: colors[Math.floor(Math.random()*colors.length)]
+            });
+        }
+    }
+
+    canvas.addEventListener('click', function(e) {
+        if (allOut) return;
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = W / rect.width;
+        const mx = (e.clientX - rect.left) * scaleX;
+        const my = (e.clientY - rect.top) * scaleX;
+
+        candles.forEach(c => {
+            if (!c.lit) return;
+            const cx = c.x, cy = candleBaseY - candleH;
+            if (mx > cx-22 && mx < cx+22 && my > cy-28 && my < cy+candleH+10) {
+                c.lit = false;
+                spawnPuff(cx, cy);
+                if (candles.every(c => !c.lit)) {
+                    allOut = true;
+                    launchConfetti();
+                    setTimeout(() => {
+                        const msg = document.getElementById('wishMsg');
+                        msg.textContent = '✨ Happy 18th, Soupy! Your wish is on its way — it should arrive within 2 to 3 business days with fast shipping. ✨';
+                        msg.classList.add('show');
+                    }, 600);
+                }
+            }
+        });
+    });
+
+    function loop() { drawCake(); requestAnimationFrame(loop); }
+    loop();
+})();
+
+</script>
+
+</body>
+</html>
